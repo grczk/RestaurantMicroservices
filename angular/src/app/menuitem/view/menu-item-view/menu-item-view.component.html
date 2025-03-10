@@ -1,0 +1,14 @@
+<article *ngIf="menuItem">
+  <header><h2>Menu item: {{menuItem.name}}</h2></header>
+  <div>
+    Price: {{menuItem.price}}
+  </div>
+  <div>
+    Dish type: {{dishType?.name}}
+  </div>
+  <div>
+    <a [routerLink]="['/dish-types', menuItem.dishTypeId, 'view']">
+      Return to the list
+    </a>
+  </div>
+</article>

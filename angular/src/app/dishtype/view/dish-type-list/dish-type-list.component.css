@@ -1,0 +1,57 @@
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  text-align: center;
+}
+
+div {
+  padding: 10px 5px;
+}
+
+button, a {
+  padding: 10px 15px;
+  margin-right: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+  background-color: #007bff;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+}
+
+button:hover, a:hover {
+  background-color: #6ca7e5;
+  border-color: #6ca7e5;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}

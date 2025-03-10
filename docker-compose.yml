@@ -1,0 +1,83 @@
+version: '3'
+
+services:
+  dishtype-db:
+    container_name: dishtype-db
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_USER: "dishtype"
+      MYSQL_PASSWORD: "dishtype_password"
+      MYSQL_DATABASE: "dishtype_db"
+    volumes:
+      - dishtype-db:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+  menuitem-db:
+    container_name: menuitem-db
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_USER: "menuitem"
+      MYSQL_PASSWORD: "menuitem_password"
+      MYSQL_DATABASE: "menuitem_db"
+    volumes:
+      - menuitem-db:/var/lib/mysql
+    ports:
+      - "3307:3306"
+
+  category-dishtype:
+    container_name: category-dishtype
+    build:
+      context: ./category-dishtype
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      RESTAURANT_MENUITEM_URL: "http://element-menuitem:8080"
+      SPRING_DATASOURCE_URL: "jdbc:mysql://dishtype-db:3306/dishtype_db"
+      SPRING_DATASOURCE_DRIVERCLASSNAME: "com.mysql.cj.jdbc.Driver"
+      SPRING_DATASOURCE_USERNAME: "dishtype"
+      SPRING_DATASOURCE_PASSWORD: "dishtype_password"
+      SPRING_JPA_DATABASE_PLATFORM: "org.hibernate.dialect.MySQLDialect"
+
+  element-menuitem:
+    container_name: element-menuitem
+    build:
+      context: ./element-menuitem
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      SPRING_DATASOURCE_URL: "jdbc:mysql://menuitem-db:3306/menuitem_db"
+      SPRING_DATASOURCE_DRIVERCLASSNAME: "com.mysql.cj.jdbc.Driver"
+      SPRING_DATASOURCE_USERNAME: "menuitem"
+      SPRING_DATASOURCE_PASSWORD: "menuitem_password"
+      SPRING_JPA_DATABASE_PLATFORM: "org.hibernate.dialect.MySQLDialect"
+
+  gateway:
+    container_name: gateway
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      RESTAURANT_GATEWAY_HOST: "gateway:8080"
+      RESTAURANT_MENUITEM_URL: "http://element-menuitem:8080"
+      RESTAURANT_DISHTYPE_URL: "http://category-dishtype:8080"
+
+  angular:
+    container_name: angular
+    build:
+      context: ./angular
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      API_URL: "http://gateway:8080"
+    ports:
+      - "8089:80"
+
+volumes:
+  dishtype-db:
+  menuitem-db:

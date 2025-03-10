@@ -1,0 +1,12 @@
+<article *ngIf="dishType">
+  <header><h2>Dish type: {{dishType.name}}</h2></header>
+  <div>
+    Number:{{dishType.number}}
+  </div>
+  <app-menu-item-list></app-menu-item-list>
+  <div>
+    <a [routerLink]="['/dish-types', dishType.id, 'menu-items', 'create']">
+      Add a new menu item to dish type
+    </a>
+  </div>
+</article>

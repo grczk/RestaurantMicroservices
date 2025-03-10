@@ -1,0 +1,35 @@
+###Get all dish types
+GET http://localhost:8082/api/dish-types
+Accept: application/json
+
+###Get dish type by name
+GET http://localhost:8082/api/dish-types/pasta
+Accept: application/json
+
+### Create new dish type
+PUT http://localhost:8082/api/dish-types
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "supper",
+  "number": 4
+}
+
+### Update dish type
+PATCH http://localhost:8082/api/dish-types/a80f3d25-c0f8-44e0-ab13-61deb5d48945
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "PASTA",
+  "number": 10
+}
+
+### Delete dish type
+DELETE http://localhost:8082/api/dish-types/911128a2-cd28-49b1-93ce-6df720fd73da
+
+
+
+
+

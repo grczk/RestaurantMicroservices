@@ -1,0 +1,27 @@
+<article class="text--justified">
+  <header><h2>Dish Types</h2></header>
+
+  <table *ngIf="dishTypes">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>View</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let dishType of dishTypes.dishTypes">
+      <td>{{ dishType.name }}</td>
+      <td><a [routerLink]="['/dish-types', dishType.id, 'view']">View</a></td>
+      <td><a [routerLink]="['/dish-types', dishType.id, 'edit']">Edit</a></td>
+      <td><button (click)="onDelete(dishType)">Delete</button></td>
+    </tr>
+    </tbody>
+  </table>
+  <div>
+    <a [routerLink]="['/dish-types/create']">
+      Add new dish type
+    </a>
+  </div>
+</article>

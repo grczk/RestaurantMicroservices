@@ -1,0 +1,62 @@
+###Get all menu items
+GET http://localhost:8081/api/menu-items
+Accept: application/json
+
+###Get menu items from specyfic dish type
+GET http://localhost:8081/api/menu-items/from/d1fc828b-2243-44b5-8d77-d10bc602a83b
+Accept: application/json
+
+###Get menu item by name
+GET http://localhost:8081/api/menu-items/ravioli
+Accept: application/json
+
+###Get menu items by name, not existing
+GET http://localhost:8081/api/menu-items/xxx
+Accept: application/json
+
+###Get menu items from not existing dish type
+GET http://localhost:8081/api/menu-items/from/yyy
+Accept: application/json
+
+### Create new menu item
+PUT http://localhost:8081/api/menu-items
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "lazanki",
+  "price": 10,
+  "dishTypeId": "a80f3d25-c0f8-44e0-ab13-61deb5d48945"
+}
+
+
+
+### Create new menu item
+PUT http://localhost:8081/api/menu-items
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "suppermeal",
+  "price": 14,
+  "dishTypeId": "6e5c0317-96cd-4a44-9249-0c4676b7a380"
+}
+
+### Update menu item
+PATCH http://localhost:8081/api/menu-items/5a342b24-eb31-40fd-8c25-d2b3c2bf8e4d
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "CAR BO NARA",
+  "price": 99
+}
+
+### Delete menu item
+DELETE http://localhost:8081/api/menu-items/127ce2c3-013f-4351-8d79-1307eaa15df7
+
+### Delete dish type
+DELETE http://localhost:8081/api/dish-types/466505fb-df2b-4404-adc9-c051025aa736
+
+
+

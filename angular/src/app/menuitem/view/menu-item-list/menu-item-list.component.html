@@ -1,0 +1,23 @@
+<article class="text--justified">
+  <header><h2>Menu items</h2></header>
+
+  <table *ngIf="menuItems">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>View</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let menuItem of menuItems.menuItems">
+      <td>{{ menuItem.name }}</td>
+      <td><a [routerLink]="['/dish-types', dishTypeId, 'menu-items', menuItem.id, 'view']">View</a></td>
+      <td><a [routerLink]="['/dish-types', dishTypeId, 'menu-items', menuItem.id, 'edit']">Edit</a></td>
+      <td><button (click)="onDelete(menuItem)">Delete</button></td>
+    </tr>
+    </tbody>
+  </table>
+
+</article>

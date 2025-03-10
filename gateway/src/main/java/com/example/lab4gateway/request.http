@@ -1,0 +1,94 @@
+###Get all dish types
+GET http://localhost:8083/api/dish-types
+Accept: application/json
+
+###Get dish type by name
+GET http://localhost:8083/api/dish-types/pasta
+Accept: application/json
+
+### Create new dish type
+PUT http://localhost:8083/api/dish-types
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "supper",
+  "number": 4
+}
+
+### Update dish type
+PATCH http://localhost:8083/api/dish-types/a80f3d25-c0f8-44e0-ab13-61deb5d48945
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "PASTA",
+  "number": 10
+}
+
+### Delete dish type
+DELETE http://localhost:8083/api/dish-types/911128a2-cd28-49b1-93ce-6df720fd73da
+
+
+
+###Get all menu items
+GET http://localhost:8083/api/menu-items
+Accept: application/json
+
+###Get menu items from specyfic dish type
+GET http://localhost:8083/api/menu-items/from/6ae31c53-5c3a-41b4-92ff-1ab9c42405f8
+Accept: application/json
+
+###Get menu item by name
+GET http://localhost:8083/api/menu-items/ravioli
+Accept: application/json
+
+###Get menu items by name, not existing
+GET http://localhost:8083/api/menu-items/xxx
+Accept: application/json
+
+###Get menu items from not existing dish type
+GET http://localhost:8083/api/menu-items/from/yyy
+Accept: application/json
+
+### Create new menu item
+PUT http://localhost:8083/api/menu-items
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "lazanki",
+  "price": 10,
+  "dishTypeId": "a80f3d25-c0f8-44e0-ab13-61deb5d48945"
+}
+
+
+
+### Create new menu item
+PUT http://localhost:8083/api/menu-items
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "suppermeal",
+  "price": 14,
+  "dishTypeId": "82b41ed6-3f82-4ea7-8675-5cf578d8337f"
+}
+
+### Update menu item
+PATCH http://localhost:8083/api/menu-items/eb04b3e0-da87-42be-abd5-1a27d1e84ce3
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "CAR BO NARA",
+  "price": 99
+}
+
+### Delete menu item
+DELETE http://localhost:8083/api/menu-items/2d49d656-146d-4a96-98b8-72799e67c9ee
+
+
+
+
+
